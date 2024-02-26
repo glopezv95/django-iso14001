@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+<title>Project Home Page</title>
+<link rel="stylesheet" href="{% static "css/style.css" %}">
+<link rel="stylesheet" href="{% static "app/css/style.css" %}">
+{% endblock head %}
+
+{% block body %}
+  <h1>This is the project Home Page</h1>
+
+  <div class="project-info">
+
+    <h2><span>{{ num_projects }}</span> Projects in database</h2>
+    
+    <form class="project" method="post">
+      {% csrf_token %}
+
+        <p>Add a new project</p>
+        {{ project_form.name }}
+        {{ project_form.name.errors }}
+        <div id="name-list"></div>
+
+        <input id="project" type="submit" value="Submit">
+        
+    </form>
+
+  </div>
+
+  <table>
+
+    <thead>
+      <th>Project</th>
+      <th>Creation date</th>
+      <th>Last update</th>
+    </thead>
+
+    <tbody>
+    </tbody>
+  </table>
+
+  <div class="table-desc">
+    <p></p>
+    <svg id="btn-previous" width="1.5rem" height="1.5rem" viewBox="0 0 24 24" fill="#DCD7C9" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 7L15 12L10 17" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <svg id="btn-next" width="1.5rem" height="1.5rem" viewBox="0 0 24 24" fill="#DCD7C9" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 7L15 12L10 17" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+  <script>let numPages = {{ num_pages }};</script>
+  <script src="{% static 'app/js/project_home/fetch_start.mjs' %}"></script>
+{% endblock body %}

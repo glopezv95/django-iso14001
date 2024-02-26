@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+<title>Home Page</title>
+<link rel="stylesheet" href="{% static "css/style.css" %}">
+{% endblock head %}
+
+{% block body %}
+<h1>This is the home page</h1>
+{{ slug }}
+
+{% endblock body %}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% endblock head %}
+
+</head>
+<body>
+    <div class="container">
+
+      <nav class="navbar">
+  
+        <a id="home" href="{% url 'home' %}">Home</a>
+  
+        <div class="dropdown">
+    
+          <ul id="dropdown" class="dropdown">
+  
+            <li id="iso14001">
+              <a href="{% url 'app:home' %}">ISO 14001</a>
+              <input id="dropdown-btn"type="button" value="">
+            </li>
+            <li class="hidden"><a href="{% url 'app:project_home' %}">Projects</a></li>
+            <li class="hidden"><a href="{% url 'app:region_home' %}">Actions</a></li>
+    
+          </ul>
+  
+        </div>
+  
+      </nav>
+  
+      <div class="wrapper">
+  
+          {% block body %}
+          {% endblock body %}
+          
+      </div>
+
+    </div>
+    <script src="{% static "js/layout.mjs" %}"></script>
+
+</body>
+</html>

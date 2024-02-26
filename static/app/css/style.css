@@ -1,0 +1,134 @@
+.project-info {
+    display: flex;
+    gap: 5rem;
+    align-items: baseline;
+}
+
+.project-info span {
+    font-size: 3rem;
+    padding-right: 1rem;
+}
+
+.project-info form {
+    width: 60%;
+    display: flex;
+}
+
+.project-info form p {
+    width: 20rem;
+    text-align: end;
+}
+
+.project-info form input[type="submit"] {
+    padding: 0 1rem;
+    border: none;
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+th {
+    border-bottom: 1px solid black;
+    padding-bottom: 0.5rem;
+}
+
+tbody td {
+    padding: 0.5rem 0;
+}
+
+tr td:first-child {
+    width: 60%;
+}
+
+.table-desc {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 2rem;
+}
+
+.table-desc svg {
+    cursor: pointer;
+}
+
+#btn-previous {
+    transform: rotate(180deg);
+}
+
+form {
+    display: grid;
+    place-items: center;
+    gap: 1.2rem;
+}
+
+fieldset {
+    width: 100%;
+    justify-content: space-evenly;
+    padding: 1rem 0;
+    margin: 0;
+    border: none;
+    border-top: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    display: grid;
+    grid-template-columns: repeat(2, 45%);
+    gap: 1rem
+}
+
+fieldset legend {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+}
+
+form.project  fieldset {
+    grid-template-columns: 75% 15%;
+}
+
+form.project input[type="text"] {
+    width: 100%;
+}
+
+.monetary {
+    grid-template-columns: none;
+}
+
+.monetary fieldset {
+    border: none;
+    padding: 0.2rem;
+}
+
+.monetary fieldset legend {
+    padding: 0 1rem;
+    font-size: 1rem;
+}
+
+form input,
+form select {
+    padding: 0;
+    border-width: 1px;
+    height: 1.5rem;
+    border-radius: 5px;
+    font-family: var(--font-family);
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+select {
+    padding-left: 0.5rem;
+}
+
+form.project input[type="submit"],
+input[type="button"] {
+    width: 5rem;
+    margin-right: 0;
+}
+
+form.region input[type="submit"],
+input[type="button"] {
+    width: 8rem;
+}

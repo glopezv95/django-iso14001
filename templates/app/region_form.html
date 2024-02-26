@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+<title>Project details</title>
+<link rel="stylesheet" href="{% static "css/style.css" %}">
+<link rel="stylesheet" href="{% static "app/css/style.css" %}">
+{% endblock head %}
+
+{% block body %}
+
+  <h1 class="project">
+    <span>{{ project_name }}</span> Project Form
+  </h1>
+
+  <form class="region" method="post">
+    {% csrf_token %}
+
+    <fieldset>
+      <legend>General action information</legend>
+      {{ region.project.label }}
+      {{ region.project }}
+      {{ region.responsible.label }}
+      {{ region.responsible }}
+      {{ region.project.errors }}
+      {{ region.responsible.errors }}
+    </fieldset>
+
+
+    <fieldset>
+
+      <legend>Region</legend>
+      {{ region.ccaa }}
+      {{ region.province }}
+      {{ region.ccaa.errors }}
+
+    </fieldset>
+
+    <fieldset>
+
+      <legend>Execution period</legend>
+      {{ region.start_date.label }}
+      {{ region.start_date }}
+      {{ region.est_end_date.label }}
+      {{ region.est_end_date }}
+      {{ region.end_date.label }}
+      {{ region.end_date }}
+      {{ region.start_date.errors }}
+      {{ region.est_end_date.errors }}
+      {{ region.end_date.errors }}
+
+    </fieldset>
+
+    <fieldset class="monetary">
+      <legend>Monetary balance</legend>
+      {{ region.est_cost.as_field_group }}
+      {{ region.est_benefit.as_field_group }}
+      {{ region.cost.as_field_group }}
+      {{ region.benefit.as_field_group }}
+    </fieldset>
+
+    <div class="buttons">
+      <input id="region" type="submit" value="Submit">
+    </div>
+
+  </form>
+
+  <script>const projectName = "{{ project_name }}";</script>
+  <script src="{% static 'app/js/action_form/layout.mjs' %}"></script>
+
+{% endblock body %}
