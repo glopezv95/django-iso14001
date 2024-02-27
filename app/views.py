@@ -5,11 +5,50 @@ from django.urls import reverse
 from . import forms
 from . import models
 
+def format_num(num_list:list):
+
+    formatted_nums = []
+    
+    for num in num_list:
+        formatted_num = num[::-1]
+        
+        for i in range(len(formatted_num)):
+            if i % 3 == 0 and i != 0:
+                formatted_num = num[::-1][:i] + ' ' + num[::-1][i:]
+        
+        formatted_nums.append(formatted_num[::-1])
+        
+    return formatted_nums
+
 def home(request):
     return render(request, 'index.html')
 
 def iso14001_home(request):
-    return render(request, 'app/index.html')
+    
+    num_projects = str(models.Project.objects.count())
+    num_actions = str(models.Action.objects.count())
+    num_indicator_sets = str(models.Indicator.objects.count())
+    
+    
+    num_ccaa = models.Action.objects.values('ccaa').distinct().count()
+    num_provinces = models.Action.objects.values('province').distinct().count()
+    
+    indicators_list = [field.name for field in models.Indicator._meta.get_fields()]
+    num_indicators = len(indicators_list)
+    
+    formatted_nums = format_num([num_projects, num_actions, num_indicator_sets])
+    
+    ctx = {
+        'num_projects': formatted_nums[0],
+        'num_actions': formatted_nums[1],
+        'num_indicator_sets': formatted_nums[2],
+        'num_ccaa': num_ccaa,
+        'num_provinces': num_provinces,
+        'indicators_list': indicators_list,
+        'num_indicators': num_indicators,
+    }
+    
+    return render(request, 'app/index.html', ctx)
 
 def project_home(request):
     

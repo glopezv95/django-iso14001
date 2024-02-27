@@ -10,4 +10,27 @@
 
 {% block body %}
 <h1>This is the ISO14001 Home Page</h1>
+<h2><span>{{ num_projects }}</span> projects</h2>
+<h2><span>{{ num_actions }}</span> actions</h2>
+<h2><span>{{ num_indicator_sets }}</span> ISO14001 indicator sets</h2>
+<h2><span>{{ num_ccaa }}</span> Autonomous Communities</h2>
+<h2><span>{{ num_provinces }}</span> Provinces</h2>
+<h2><span>{{ num_indicators }}</span> ISO 14001 indicator fields</h2>
+
+<div class="scroller"></div>
+
+<script>
+
+    const indicatorsList = [];
+
+    {% for item in indicators_list %}
+        indicatorsList.push("{{ item }}")
+    {% endfor %};
+
+    indicatorsList.shift()
+
+</script>
+
+<script src="{% static 'app/js/iso14001_home/layout.mjs' %}"></script>
+
 {% endblock body %}

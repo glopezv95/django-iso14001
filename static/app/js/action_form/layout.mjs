@@ -19,15 +19,14 @@ let projects = Array.from(projectInput.children)
 if (projectName !== "") {
 
     projects.forEach(project => {
-        projectInput.removeChild(project);
+
+        if (project.textContent === projectName) {
+            project.setAttribute("selected", "");
+        } else {
+            projectInput.removeChild(project);
+        }
+        
     });
-
-    let newOption = document.createElement("option");
-    newOption.textContent = projectName;
-
-    projectInput.appendChild(newOption);
-    projectInput.children[0].setAttribute("selected", true);
-    projectInput.disabled = true;
 }
 
 // Fetch the ccaa/province json

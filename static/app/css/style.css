@@ -4,9 +4,35 @@
     align-items: baseline;
 }
 
-.project-info span {
+span {
     font-size: 3rem;
+    color: var(--secondary-color);
     padding-right: 1rem;
+}
+
+.scroller {
+    margin-top: 6rem;
+    display:flex;
+    gap: 1rem;
+    overflow: hidden;
+}
+
+.scroller-primary,
+.scroller-secondary {
+    font-size: 1.5rem;
+    display: flex;
+    gap: 1.5rem;
+    animation: loop 20s linear infinite;
+}
+
+@keyframes loop {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
 }
 
 .project-info form {
@@ -74,9 +100,18 @@ fieldset {
     border: none;
     border-top: 1px solid var(--primary-color);
     color: var(--primary-color);
-    display: grid;
-    grid-template-columns: repeat(2, 45%);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
     gap: 1rem
+}
+
+.errorlist {
+    flex-basis: 100%;
+}
+
+fieldset :not(.errorlist) {
+    flex-basis: calc(90%/2);
 }
 
 fieldset legend {
@@ -92,13 +127,10 @@ form.project input[type="text"] {
     width: 100%;
 }
 
-.monetary {
-    grid-template-columns: none;
-}
-
 .monetary fieldset {
     border: none;
     padding: 0.2rem;
+    display: grid;
 }
 
 .monetary fieldset legend {

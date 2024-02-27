@@ -16,15 +16,18 @@
 
   <form class="region" method="post">
     {% csrf_token %}
-
+    
     <fieldset>
       <legend>General action information</legend>
-      {{ region.project.label }}
+      <p>{{ region.project.label }}</p>
       {{ region.project }}
-      {{ region.responsible.label }}
-      {{ region.responsible }}
       {{ region.project.errors }}
+      <p>{{ region.responsible.label }}</p>
+      {{ region.responsible }}
       {{ region.responsible.errors }}
+      <p>{{ region.name.label }}</p>
+      {{ region.name }}
+      {{ region.name.errors }}
     </fieldset>
 
 
@@ -40,11 +43,11 @@
     <fieldset>
 
       <legend>Execution period</legend>
-      {{ region.start_date.label }}
+      <p>{{ region.start_date.label }}</p>
       {{ region.start_date }}
-      {{ region.est_end_date.label }}
+      <p>{{ region.est_end_date.label }}</p>
       {{ region.est_end_date }}
-      {{ region.end_date.label }}
+      <p>{{ region.end_date.label }}</p>
       {{ region.end_date }}
       {{ region.start_date.errors }}
       {{ region.est_end_date.errors }}
